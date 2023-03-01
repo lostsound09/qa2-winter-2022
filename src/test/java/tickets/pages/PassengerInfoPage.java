@@ -1,5 +1,6 @@
 package tickets.pages;
 
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ByIdOrName;
 import tickets.BaseFunc;
@@ -14,6 +15,8 @@ public class PassengerInfoPage {
     private final By BAG = By.id("bugs");
     private final By FLIGHT = By.id("flight");
     private final By GET_PRICE_BTN = By.xpath(".//span[.= 'Get Price']");
+    private final By DESTINATION_FROM = By.xpath("(.//div[@class = 'infoTxt']//span[@class = 'bTxt'])[1]");
+    private final By DESTINATION_TO = By.xpath("(.//div[@class = 'infoTxt']//span[@class = 'bTxt'])[2]");
 
 
     public PassengerInfoPage(BaseFunc baseFunc) {
@@ -44,6 +47,12 @@ public class PassengerInfoPage {
 
     public void clickGetPriceButton() {
         baseFunc.click(GET_PRICE_BTN);
+    }
+    public void assertFromAirportEquals(String airport) {
+        Assertions.assertEquals(airport, baseFunc.waitForElement(DESTINATION_FROM).getText());
+    }
+    public void assertToAirportEquals(String airport) {
+        Assertions.assertEquals(airport, baseFunc.waitForElement(DESTINATION_TO).getText());
     }
 }
 

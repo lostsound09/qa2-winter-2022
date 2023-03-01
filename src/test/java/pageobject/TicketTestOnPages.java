@@ -9,6 +9,7 @@ public class TicketTestOnPages {
     private final String FROM_AIRPORT = "RIX";
     private final String TO_AIRPORT = "SFO";
     private BaseFunc baseFunc = new BaseFunc();
+
     @Test
     public void successfulRegistrationTest() {
         baseFunc.openUrl(URL);
